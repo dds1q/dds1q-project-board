@@ -1,7 +1,6 @@
 package com.project.projectboard.repository;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.project.projectboard.config.JpaConfig;
 import com.project.projectboard.domain.Article;
@@ -11,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
+
 
 
 @DisplayName( "JPA 연결 테스트" )
