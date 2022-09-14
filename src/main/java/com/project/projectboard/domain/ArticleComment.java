@@ -1,10 +1,8 @@
 package com.project.projectboard.domain;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,24 +12,18 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @Getter
 @ToString
 @EnableJpaAuditing
-@EntityListeners(AuditingEntityListener.class)
 @Table( indexes ={
     @Index( columnList = "content" ),
     @Index( columnList = "createdAt" ),
     @Index( columnList = "createdBy" )
 } )
 @Entity
-public class ArticleComment {
+public class ArticleComment extends AuditingFields {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -43,21 +35,6 @@ public class ArticleComment {
     @Setter @Column( nullable = false , length = 500 )
     private String content;
 
-    // meta data
-    @CreatedDate
-    @Column( nullable = false )
-    private LocalDateTime createdAt;
-
-    @CreatedBy @Column( nullable = false, length = 100 )
-    private String createdBy;
-
-    @LastModifiedDate
-    @Column( nullable = false )
-    private LocalDateTime modifiedAt;
-
-    @LastModifiedBy
-    @Column( nullable = false ,length = 100 )
-    private String modifiedBy;
 
     protected ArticleComment(){}
 
